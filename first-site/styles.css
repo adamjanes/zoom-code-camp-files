@@ -29,7 +29,6 @@ body {
 	height: 100%;
 	width: 50%;
 	overflow: hidden; /* chop off images sticking out */
-
 }
 
 img {
