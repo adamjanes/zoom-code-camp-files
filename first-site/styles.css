@@ -58,8 +58,8 @@ h4 {
 
 /* footer flexbox */
 #footer {
-	display: flex;
-	flex: 1;
-	justify-content: center;
-	align-items: center;
+	display: flex; /* make this a flexbox container */
+	flex: 1; /* take up all available space */
+	justify-content: center; /* align footer text horizontally */
+	align-items: center; /* align footer text vertically */
 }
