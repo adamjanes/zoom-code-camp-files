@@ -23,4 +23,4 @@ function calculateAgeInYear(year) {
   alert(message);
 }
 
-// calculateAgeInYear(2026);
+calculateAgeInYear(2026);
