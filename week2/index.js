@@ -12,5 +12,14 @@ function getAgeFromUser() {
   return age;
 }
 
-const userAge = getAgeFromUser();
-console.log(userAge);
+// const userAge = getAgeFromUser();
+// console.log(userAge);
+
+function calculateAgeIn2050() {
+  const userAge = getAgeFromUser();
+  const ageIn2050 = Number(userAge) + 30;
+  const message = "In 2050, you will be " + ageIn2050 + " years old!";
+  alert(message);
+}
+
+calculateAgeIn2050();
