@@ -15,12 +15,10 @@ function getAgeFromUser() {
 // const userAge = getAgeFromUser();
 // console.log(userAge);
 
-function calculateAgeInYear(year) {
+function calculateAgeIn2050() {
   const userAge = getAgeFromUser();
-  const yearsToYear = year - 2020;
-  const ageInYear = Number(userAge) + yearsToYear;
-  const message = "In " + year + ", you will be " + ageInYear + " years old!";
+  const message = "In 2050, you will be" + userAge + " years old!";
   alert(message);
 }
 
-calculateAgeInYear(2026);
+calculateAgeIn2050();
