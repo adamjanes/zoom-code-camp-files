@@ -1,0 +1,28 @@
+body {
+  background-color: lightgoldenrodyellow;
+}
+
+#header {
+  background-color: firebrick;
+}
+
+h2 {
+  font-size: 36px;
+  font-family: Arial, sans-serif;
+  margin: 0px;
+  color: white;
+}
+
+.wrong-text {
+  color: firebrick;
+  font-weight: 900;
+}
+
+#cite-text {
+  text-align: right;
+}
+
+h3 {
+  color: firebrick;
+  margin-top: 30px;
+}
