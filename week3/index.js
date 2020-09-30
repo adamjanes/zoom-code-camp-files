@@ -15,20 +15,30 @@ function frenchCalculator() {
 
 // frenchCalculator();
 
-for (let i = 0; i < 8; i++) {
-  let lineOutput = '';
+function buildPyramid() {
+  let height;
 
-  // j here == "character position in line"
-  for (let j = 1; j <= 8; j++) {
-    // if we're not at the (8 - i)th position => space
-    if (j < 8 - i) {
-      lineOutput = lineOutput + " ";
-    }
-    // otherwise, it's a hash
-    else {
-      lineOutput = lineOutput + "#";
+  while (!height) {
+    const input = Number(prompt("How high do you want the pyramid?"));
+    if (input > 0 && input <= 20) {
+      height = input;
     }
   }
 
-  console.log(lineOutput);
+  for (let i = 0; i < height; i++) {
+    let lineOutput = '';
+  
+    for (let j = 1; j <= height; j++) {
+      if (j < height - i) {
+        lineOutput = lineOutput + " ";
+      }
+      else {
+        lineOutput = lineOutput + "#";
+      }
+    }
+  
+    console.log(lineOutput);
+  }
 }
+
+buildPyramid();
