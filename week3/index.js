@@ -2,10 +2,13 @@ function frenchCalculator() {
   const userAge = Number(prompt("How old are you?"));
   const crushAge = Number(prompt("How old is your crush?"));
 
-  if (userAge > crushAge && (crushAge < (userAge / 2) + 7)) {
+  const lowerLimit = (userAge / 2) + 7;
+  const upperLimit = (userAge * 2) - 7;
+
+  if (crushAge < lowerLimit) {
     console.log("This one seems a bit young for you!");
   }
-  else if (userAge < crushAge && (crushAge > (userAge * 2) - 7)) {
+  else if (crushAge > upperLimit) {
     console.log("This one seems a bit old for you!");
   }
   else {
