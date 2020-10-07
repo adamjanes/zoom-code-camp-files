@@ -88,5 +88,35 @@ for (let i = 0; i < buttons.length; i++) {
     computerImage.alt = computerMove.alt;
 
     const results = playGame(playerMove, computerMove.name);
+
+    // update computer's text
+    const computerText = document.getElementById("computer-text");
+    computerText.innerHTML = results.text;
+
+    if (results.winner === "player") {
+      computerText.style.color = "red";
+    } else if (results.winner === "computer") {
+      computerText.style.color = "green";
+    } else {
+      computerText.style.color = "black";
+    }
+
+    // update scoreboard
+    if (results.winner === "player") {
+      const playerScore = document.getElementById("player-score");
+      playerScore.innerHTML = Number(playerScore.innerHTML) + 1;
+
+      // update computer text
+      computerText.style.color = "green";
+    } else if (results.winner === "computer") {
+      const computerScore = document.getElementById("computer-score");
+      computerScore.innerHTML = Number(computerScore.innerHTML) + 1;
+
+      // update computer text
+      computerText.style.color = "red";
+    } else {
+      // update computer text
+      computerText.style.color = "black";
+    }
   });
 }
