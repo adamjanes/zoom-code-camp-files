@@ -23,6 +23,58 @@ function randomMove() {
   }
 }
 
+function playGame(playerMove, computerMove) {
+  if (playerMove === computerMove) {
+    // same move => draw
+    return {
+      winner: null,
+      text: "Draw! Let's try that again.",
+    };
+  } else if (playerMove === "rock") {
+    if (computerMove === "paper") {
+      // computer wins
+      return {
+        winner: "computer",
+        text: "You fool! Paper beats rock! Let's try that again.",
+      };
+    } else {
+      // player wins
+      return {
+        winner: "player",
+        text: "Argh! Of course - rock beats scissors! Let's try that again.",
+      };
+    }
+  } else if (playerMove === "paper") {
+    if (computerMove === "scissors") {
+      // computer wins
+      return {
+        winner: "computer",
+        text: "You fool! Scissors beats paper! Let's try that again.",
+      };
+    } else {
+      // player wins
+      return {
+        winner: "player",
+        text: "Argh! Of course - paper beats rock! Let's try that again.",
+      };
+    }
+  } else {
+    if (computerMove === "rock") {
+      // computer wins
+      return {
+        winner: "computer",
+        text: "You fool! Rock beats scissors! Let's try that again.",
+      };
+    } else {
+      // player wins
+      return {
+        winner: "player",
+        text: "Argh! Of course - scissors beats paper! Let's try that again.",
+      };
+    }
+  }
+}
+
 const buttons = document.querySelectorAll(".button");
 
 for (let i = 0; i < buttons.length; i++) {
@@ -34,5 +86,7 @@ for (let i = 0; i < buttons.length; i++) {
     const computerImage = document.getElementById("computer-image");
     computerImage.src = computerMove.src;
     computerImage.alt = computerMove.alt;
+
+    const results = playGame(playerMove, computerMove.name);
   });
 }
