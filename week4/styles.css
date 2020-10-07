@@ -1,0 +1,75 @@
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#header {
+  background-color: #333333;
+  padding: 10px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 36px;
+  font-family: Arial, sans-serif;
+  margin: 0px;
+  color: white;
+}
+
+#scoreboard {
+  background-color: #cccccc;
+  height: 100px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.score {
+  padding: 20px;
+}
+
+h3 {
+  font-size: 36px;
+  font-family: Arial, sans-serif;
+  margin: 0px;
+  color: #333333;
+}
+
+#content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  flex: 1;
+}
+
+#computer-image {
+  height: 300px;
+}
+
+#computer-text {
+  font-size: 24px;
+}
+
+#computer-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+button {
+  margin: 0px 10px;
+  font-size: 32px;
+  width: 200px;
+  padding: 10px;
+}
