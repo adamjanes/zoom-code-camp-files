@@ -24,6 +24,8 @@ function createCard(product) {
 fetch("https://fakestoreapi.com/products")
   .then((res) => res.json())
   .then((data) => {
+    const myCart = new Cart();
+
     data.forEach((product) => {
       createCard(product);
     });
