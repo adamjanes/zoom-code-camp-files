@@ -25,6 +25,7 @@ fetch("https://fakestoreapi.com/products")
   .then((res) => res.json())
   .then((data) => {
     const myCart = new Cart();
+    let walletBalance = 1000;
 
     data.forEach((product) => {
       createCard(product);
@@ -34,6 +35,22 @@ fetch("https://fakestoreapi.com/products")
       button.addEventListener("click", () => {
         myCart.add(product);
       });
+    });
+
+    // add cart button event listeners
+    document.getElementById("empty-button").addEventListener("click", () => {
+      myCart.empty();
+    });
+    document.getElementById("checkout-button").addEventListener("click", () => {
+      const total = myCart.calculateTotal();
+      if (total < walletBalance) {
+        walletBalance = (walletBalance - total).toFixed(2); // Number.toFixed() rounds to a number of decimal points
+        document.getElementById("wallet-balance").innerHTML = walletBalance;
+        myCart.empty();
+        alert("Thanks for shopping with us today! Your items are on the way.");
+      } else {
+        alert("You don't have enough credits for all that!");
+      }
     });
   })
   .catch((e) => {
