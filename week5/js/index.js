@@ -14,7 +14,7 @@ function createCard(product) {
       <div class="product-title">
         ${product.title}
       </div>
-      <button class="product-button">Add to cart</button>
+      <button id="btn-${product.id}" class="product-button">Add to cart</button>
     </div>
   `;
 
@@ -28,6 +28,12 @@ fetch("https://fakestoreapi.com/products")
 
     data.forEach((product) => {
       createCard(product);
+
+      // attach click event listener to newly created button
+      const button = document.getElementById(`btn-${product.id}`);
+      button.addEventListener("click", () => {
+        myCart.add(product);
+      });
     });
   })
   .catch((e) => {
