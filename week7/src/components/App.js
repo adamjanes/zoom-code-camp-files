@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Container, Paper } from "@material-ui/core";
 
 import Header from "./Header";
+import Form from "./Form";
 
 const useStyles = makeStyles({
   app: {
@@ -32,8 +33,8 @@ const App = () => {
       <Header />
       <Container className={classes.container} maxWidth="sm">
         <Paper className={classes.paper}>
-          <h3>Here is a title!</h3>
-          <p>Here is some text.</p>
+          <h3>Let's play Mad Libs!</h3>
+          <Form />
         </Paper>
       </Container>
     </div>
