@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
 import { Container, Paper } from "@material-ui/core";
 
@@ -16,7 +17,7 @@ const useStyles = makeStyles({
     padding: "20px",
     margin: "10px 0px",
     display: "flex",
-    flexDirection: "column"
+    flexDirection: "column",
   },
   container: {
     flex: 1,
@@ -27,6 +28,12 @@ const useStyles = makeStyles({
 
 const App = () => {
   const classes = useStyles();
+  const [data, setData] = useState({});
+  useEffect(() => {
+    axios("http://madlibz-app.herokuapp.com/api/random").then(({ data }) => {
+      setData(data);
+    });
+  }, []);
 
   return (
     <div className={classes.app}>
@@ -34,7 +41,7 @@ const App = () => {
       <Container className={classes.container} maxWidth="sm">
         <Paper className={classes.paper}>
           <h3>Let's play Mad Libs!</h3>
-          <Form />
+          <Form data={data} />
         </Paper>
       </Container>
     </div>

@@ -12,35 +12,25 @@ const useStyles = makeStyles({
   },
 });
 
-const Form = () => {
+const Form = ({ data }) => {
   const classes = useStyles();
+  const { blanks } = data;
+
+  const renderBlanks = () =>
+    blanks.map((label, index) => (
+      <TextField
+        key={index}
+        className={classes.textField}
+        label={label}
+        variant="outlined"
+        fullWidth
+      />
+    ));
 
   return (
     <form autoComplete="off">
-      <TextField
-        className={classes.textField}
-        label="Adjective"
-        variant="outlined"
-        fullWidth
-      />
-      <TextField
-        className={classes.textField}
-        label="Noun"
-        variant="outlined"
-        fullWidth
-      />
-      <TextField
-        className={classes.textField}
-        label="A Place"
-        variant="outlined"
-        fullWidth
-      />
-      <TextField
-        className={classes.textField}
-        label="Adjective"
-        variant="outlined"
-        fullWidth
-      />
+      {/* Only render this if blanks isn't undefined. */}
+      {blanks && renderBlanks()}
       <Button
         className={classes.button}
         size="large"
