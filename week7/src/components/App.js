@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
 import { Container, Paper } from "@material-ui/core";
+import { Switch, Route } from "react-router-dom";
 
 import Header from "./Header";
 import Form from "./Form";
+import Results from "./Results";
 
 const useStyles = makeStyles({
   app: {
@@ -40,8 +42,15 @@ const App = () => {
       <Header />
       <Container className={classes.container} maxWidth="sm">
         <Paper className={classes.paper}>
-          <h3>Let's play Mad Libs!</h3>
-          <Form data={data} />
+          <Switch>
+            <Route exact path="/">
+              <h3>Let's play Mad Libs!</h3>
+              <Form data={data} />
+            </Route>
+            <Route path="/results">
+              <Results />
+            </Route>
+          </Switch>
         </Paper>
       </Container>
     </div>
