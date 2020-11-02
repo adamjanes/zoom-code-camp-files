@@ -37,6 +37,8 @@ const App = () => {
     });
   }, []);
 
+  console.log(data)
+
   return (
     <div className={classes.app}>
       <Header />
@@ -48,7 +50,7 @@ const App = () => {
               <Form data={data} />
             </Route>
             <Route path="/results">
-              <Results />
+              <Results title={data.title} />
             </Route>
           </Switch>
         </Paper>
