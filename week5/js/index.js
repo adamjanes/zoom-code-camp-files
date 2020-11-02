@@ -25,7 +25,6 @@ fetch("https://fakestoreapi.com/products")
   .then((res) => res.json())
   .then((data) => {
     const myCart = new Cart();
-    let walletBalance = 1000;
 
     data.forEach((product) => {
       createCard(product);
@@ -43,6 +42,7 @@ fetch("https://fakestoreapi.com/products")
     });
     document.getElementById("checkout-button").addEventListener("click", () => {
       const total = myCart.calculateTotal();
+      let walletBalance = Number(document.getElementById("wallet-balance").innerHTML)
       if (total < walletBalance) {
         walletBalance = (walletBalance - total).toFixed(2); // Number.toFixed() rounds to a number of decimal points
         document.getElementById("wallet-balance").innerHTML = walletBalance;
