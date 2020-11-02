@@ -37,8 +37,6 @@ const App = () => {
     });
   }, []);
 
-  console.log(data)
-
   return (
     <div className={classes.app}>
       <Header />

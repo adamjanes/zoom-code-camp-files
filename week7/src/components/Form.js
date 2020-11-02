@@ -3,6 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { TextField, Button } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 import { TextContext } from "../contexts/TextContext";
+import Loading from "./Loading";
 
 const useStyles = makeStyles({
   textField: {
@@ -42,10 +43,12 @@ const Form = ({ data }) => {
       ""
     );
 
+  if (!blanks) {
+    return <Loading />;
+  }
   return (
     <form autoComplete="off">
-      {/* Only render this if blanks isn't undefined. */}
-      {blanks && renderBlanks()}
+      {renderBlanks()}
       <Button
         className={classes.button}
         size="large"
@@ -55,7 +58,7 @@ const Form = ({ data }) => {
         onClick={() => {
           const text = generateText(answers);
           setText(text);
-          history.push("/results")
+          history.push("/results");
         }}
       >
         Create Mad Lib
