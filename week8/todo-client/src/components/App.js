@@ -7,6 +7,8 @@ import Header from "./Header";
 import AddTodo from "./AddTodo";
 import TodoList from "./TodoList";
 
+const ROOT_URL = "http://zoomcamptodos.herokuapp.com"
+
 const useStyles = makeStyles({
   app: {
     height: "100vh",
@@ -32,7 +34,7 @@ const App = () => {
   const [todos, setTodos] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:5000/todos")
+      .get(`${ROOT_URL}/todos`)
       .then((res) => {
         setTodos(res.data);
       })
@@ -43,7 +45,7 @@ const App = () => {
 
   const addTodo = (task) => {
     axios
-      .post("http://localhost:5000/todos", { task })
+      .post(`${ROOT_URL}/todos`, { task })
       .then((res) => {
         setTodos([...todos, res.data]);
       })
@@ -54,7 +56,7 @@ const App = () => {
 
   const updateTodo = (id, values) => {
     axios
-      .patch(`http://localhost:5000/todos/${id}`, values)
+      .patch(`${ROOT_URL}/todos/${id}`, values)
       .then((res) => {
         const newTodos = todos.map((todo) => {
           if (todo._id === id) {
@@ -72,7 +74,7 @@ const App = () => {
 
   const deleteTodo = (id) => {
     axios
-      .delete(`http://localhost:5000/todos/${id}`)
+      .delete(`${ROOT_URL}/todos/${id}`)
       .then((res) => {
         const newTodos = todos.filter((todo) => todo._id !== id);
         setTodos(newTodos);

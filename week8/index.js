@@ -22,4 +22,8 @@ app.get("/ping", (req, res) => {
   res.send("pong");
 });
 
-app.listen(5000);
+// we need to add the HOST argument to 
+// get this to work with heroku
+const PORT = process.env.PORT || 5000;
+const HOST = '0.0.0.0';
+app.listen(PORT, HOST);
