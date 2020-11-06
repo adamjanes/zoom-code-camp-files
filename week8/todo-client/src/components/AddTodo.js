@@ -30,7 +30,7 @@ const AddTodo = ({ addTodo }) => {
   };
 
   return (
-    <Grid className={classes.searchBox} container xs={12} justify="center">
+    <Grid className={classes.searchBox} container justify="center">
       <Grid item xs={8}>
         <InputBase
           className={classes.input}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Container, Paper } from "@material-ui/core";
-import { v4 as uuidv4 } from "uuid";
+import axios from "axios";
 
 import Header from "./Header";
 import AddTodo from "./AddTodo";
@@ -31,40 +31,55 @@ const App = () => {
   const classes = useStyles();
   const [todos, setTodos] = useState([]);
   useEffect(() => {
-    setTodos([
-      { id: uuidv4(), task: "Do laundry", completed: false },
-      { id: uuidv4(), task: "Get car fixed", completed: true },
-      { id: uuidv4(), task: "Email Mandy", completed: false },
-      { id: uuidv4(), task: "Complete TPS report", completed: false },
-    ]);
+    axios
+      .get("http://localhost:5000/todos")
+      .then((res) => {
+        setTodos(res.data);
+      })
+      .catch((e) => {
+        console.log("Error: Could not load TODOs.", e);
+      });
   }, []);
 
   const addTodo = (task) => {
-    const newTodo = {
-      id: uuidv4(),
-      task,
-      completed: false,
-    };
-    setTodos([...todos, newTodo]);
+    axios
+      .post("http://localhost:5000/todos", { task })
+      .then((res) => {
+        setTodos([...todos, res.data]);
+      })
+      .catch((e) => {
+        console.log("Error: Could not add TODO.", e);
+      });
   };
 
   const updateTodo = (id, values) => {
-    const newTodos = todos.map((todo) => {
-      if (todo.id === id) {
-        return {
-          ...todo,
-          ...values,
-        };
-      } else {
-        return todo;
-      }
-    });
-    setTodos(newTodos);
+    axios
+      .patch(`http://localhost:5000/todos/${id}`, values)
+      .then((res) => {
+        const newTodos = todos.map((todo) => {
+          if (todo._id === id) {
+            return res.data;
+          } else {
+            return todo;
+          }
+        });
+        setTodos(newTodos);
+      })
+      .catch((e) => {
+        console.log("Error: Could not update TODO.", e);
+      });
   };
 
   const deleteTodo = (id) => {
-    const newTodos = todos.filter((todo) => todo.id !== id);
-    setTodos(newTodos);
+    axios
+      .delete(`http://localhost:5000/todos/${id}`)
+      .then((res) => {
+        const newTodos = todos.filter((todo) => todo._id !== id);
+        setTodos(newTodos);
+      })
+      .catch((e) => {
+        console.log("Error: Could not delete TODO.", e);
+      });
   };
 
   return (

@@ -31,7 +31,7 @@ const TodoListItem = ({ todo, updateTodo, deleteTodo }) => {
           tabIndex={-1}
           disableRipple
           onClick={() => {
-            updateTodo(todo.id, {
+            updateTodo(todo._id, {
               completed: !todo.completed
             })
           }}
@@ -61,7 +61,7 @@ const TodoListItem = ({ todo, updateTodo, deleteTodo }) => {
               edge="end"
               aria-label="confirm"
               onClick={() => {
-                updateTodo(todo.id, {
+                updateTodo(todo._id, {
                   task: value,
                 });
                 setEditing(false);
@@ -89,7 +89,7 @@ const TodoListItem = ({ todo, updateTodo, deleteTodo }) => {
               edge="end" 
               aria-label="delete"
               onClick={() => {
-                deleteTodo(todo.id)
+                deleteTodo(todo._id)
               }}
             >
               <Delete />

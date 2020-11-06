@@ -7,6 +7,7 @@ const TodoList = ({ todos, updateTodo, deleteTodo }) => (
   <List dense={true}>
     {todos.map((todo) => (
       <TodoListItem
+        key={todo._id}
         todo={todo}
         updateTodo={updateTodo}
         deleteTodo={deleteTodo}
