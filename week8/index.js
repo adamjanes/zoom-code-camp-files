@@ -4,7 +4,10 @@ const router = require("./routes/todos");
 const cors = require('cors');
 
 const app = express();
-app.use("/todos", cors());
+
+// enable CORS for our app
+app.use(cors());
+// enable pre-flight requests
 app.options('*', cors())
 
 mongoose.connect("mongodb+srv://adam:foobar123@cluster0.aopn6.mongodb.net/database?retryWrites=true&w=majority")
